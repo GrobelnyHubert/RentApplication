@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RentApplication.Models.Database;
 
 namespace RentApplication
 {
@@ -27,6 +29,10 @@ namespace RentApplication
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            var dbConnectionString = @"Server=(localdb)\mssqllocaldb;Database=RentAppDb;Trusted_Connection=True;";
+
+            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(dbConnectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
