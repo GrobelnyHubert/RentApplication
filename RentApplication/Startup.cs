@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RentApplication.Models.Database;
+using RentApplication.Models.Interfaces;
+using RentApplication.Models.Repositories;
 
 namespace RentApplication
 {
@@ -30,9 +32,11 @@ namespace RentApplication
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            var dbConnectionString = @"Server=(localdb)\mssqllocaldb;Database=RentAppDb;Trusted_Connection=True;";
 
-            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(dbConnectionString));
+            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RentDatabase")));
+
+
+            services.AddScoped<IPropertyRepository, PropertyRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
