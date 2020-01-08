@@ -32,7 +32,10 @@ namespace RentApplication
                 configuration.RootPath = "ClientApp/dist";
             });
 
-
+            services.Configure<IISOptions>(options =>
+            {
+                options.ForwardClientCertificate = false;
+            });
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RentDatabase")));
 
 
