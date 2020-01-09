@@ -27,6 +27,18 @@
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\models\Property.ts" />
+    <None Remove="ClientApp\src\app\services\http-properties-backend-service.ts" />
+    <None Remove="ClientApp\src\app\services\properties-backend-service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\models\Property.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\http-properties-backend-service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\properties-backend-service.ts" />
+  </ItemGroup>
+
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">
