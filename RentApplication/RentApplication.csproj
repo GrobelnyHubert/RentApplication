@@ -28,15 +28,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\src\app\models\Property.ts" />
-    <None Remove="ClientApp\src\app\services\http-properties-backend-service.ts" />
-    <None Remove="ClientApp\src\app\services\properties-backend-service.ts" />
+    <None Remove="ClientApp\src\app\property\properties.component.ts" />
+    <None Remove="ClientApp\src\app\property\services\properties.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\app\models\Property.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\services\http-properties-backend-service.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\services\properties-backend-service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\property\properties.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\property\services\properties.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\models\Property.ts" />
+    <TypeScriptCompile Include="ClientApp\src\services\http-properties-backend-service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\services\properties-backend-service.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

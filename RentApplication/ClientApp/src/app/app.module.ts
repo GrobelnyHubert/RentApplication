@@ -10,13 +10,19 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
+import { PropertiesComponent } from './property/properties.component';
+import { PropertiesService } from './property/services/properties.service';
+import { PropertiesBackendService } from '../services/properties-backend-service';
+import { HttpPropertiesBackendService } from '../services/http-properties-backend-service';
+
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    PropertiesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -25,10 +31,15 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+        { path: 'fetch-data', component: FetchDataComponent },
+        { path: 'properties', component: PropertiesComponent }
     ])
   ],
-  providers: [],
+    providers: [
+        PropertiesService, {
+            provide: PropertiesBackendService, useClass: HttpPropertiesBackendService
+        }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
