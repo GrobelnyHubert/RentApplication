@@ -28,13 +28,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\src\app\property\properties.component.ts" />
-    <None Remove="ClientApp\src\app\property\services\properties.service.ts" />
+    <None Remove="ClientApp\src\app\properties\properties.component.ts" />
+    <None Remove="ClientApp\src\app\properties\services\properties.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\app\property\properties.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\property\services\properties.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\properties\components\properties.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\properties\services\properties.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\models\Property.ts" />
     <TypeScriptCompile Include="ClientApp\src\services\http-properties-backend-service.ts" />
     <TypeScriptCompile Include="ClientApp\src\services\properties-backend-service.ts" />

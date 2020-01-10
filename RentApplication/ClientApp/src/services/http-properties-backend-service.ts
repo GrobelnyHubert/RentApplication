@@ -18,9 +18,7 @@ export class HttpPropertiesBackendService extends PropertiesBackendService {
   private jsonContentOptions: RequestOptions;
   constructor(private http: HttpClient) {
     super();
-    let headersJson: Headers = new Headers({
-      'Content-Type': 'application/json',
-    });
+
   }
     addProperty(newProperty: Property) {
         const headers = new HttpHeaders().set('Content-Type', 'application/json');

@@ -10,8 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
-import { PropertiesComponent } from './property/properties.component';
-import { PropertiesService } from './property/services/properties.service';
+import { PropertiesComponent } from './properties/components/properties.component';
+import { PropertiesService } from './properties/services/properties.service';
 import { PropertiesBackendService } from '../services/properties-backend-service';
 import { HttpPropertiesBackendService } from '../services/http-properties-backend-service';
 
