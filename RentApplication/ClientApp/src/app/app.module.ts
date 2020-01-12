@@ -14,6 +14,7 @@ import { PropertiesComponent } from './properties/components/properties.componen
 import { PropertiesService } from './properties/services/properties.service';
 import { PropertiesBackendService } from '../services/properties-backend-service';
 import { HttpPropertiesBackendService } from '../services/http-properties-backend-service';
+import { PropertyDetailsComponent } from './properties/components/property-details.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpPropertiesBackendService } from '../services/http-properties-backen
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    PropertiesComponent
+    PropertiesComponent,
+    PropertyDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,8 +33,11 @@ import { HttpPropertiesBackendService } from '../services/http-properties-backen
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
-        { path: 'fetch-data', component: FetchDataComponent },
-        { path: 'properties', component: PropertiesComponent }
+      { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'properties', component: PropertiesComponent },
+        { path: 'properties/new-property', component: PropertyDetailsComponent },
+        { path: 'properties/property-details/:id', component: PropertyDetailsComponent },
+        { path: 'properties/property-update/:id', component: PropertyDetailsComponent }
     ])
   ],
     providers: [
