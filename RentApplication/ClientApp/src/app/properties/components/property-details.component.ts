@@ -1,9 +1,9 @@
-﻿import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Property } from '../../../models/property';
 import { PropertiesService } from '../services/properties.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import 'rxjs/add/operator/switchMap';
+import { map } from 'rxjs/operators';
 
 @Component({
     templateUrl: './property-details.component.html'
@@ -27,7 +27,7 @@ export class PropertyDetailsComponent implements OnInit {
         if (this.location.isCurrentPathEqualTo("/properties/new-property")) {
             this.pageTitle = "Nowa nieruchomość";
         }
-        else if (this.location.isCurrentPathEqualTo("/properties/property-update" + this.urlParam)) {
+        else if (this.location.isCurrentPathEqualTo("/properties/property-update/" + this.urlParam)) {
             this.pageTitle = "Aktualizacja nieruchomości";
             this.downloadProperty();
         }
