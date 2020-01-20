@@ -1,9 +1,10 @@
-﻿import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Property } from '../../../models/property';
 import { PropertiesService } from '../services/properties.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import 'rxjs/add/operator/switchMap';
+import { map } from 'rxjs/operators';
+
 
 @Component({
     templateUrl: './property-details.component.html'
@@ -13,7 +14,8 @@ export class PropertyDetailsComponent implements OnInit {
     constructor(
         private propertiesService: PropertiesService,
         private activatedRoute: ActivatedRoute,
-        private location: Location,
+        private location: Location
+       
     ) { };
 
     pageTitle: string;
@@ -27,14 +29,16 @@ export class PropertyDetailsComponent implements OnInit {
         if (this.location.isCurrentPathEqualTo("/properties/new-property")) {
             this.pageTitle = "Nowa nieruchomość";
         }
-        else if (this.location.isCurrentPathEqualTo("/properties/property-update" + this.urlParam)) {
+        else if (this.location.isCurrentPathEqualTo("/properties/property-update/" + this.urlParam)) {
             this.pageTitle = "Aktualizacja nieruchomości";
             this.downloadProperty();
+            console.log(this.location.normalize);
         }
         else {
             this.pageTitle = "Szczegóły nieruchomości";
             this.isInEditMode = false;
             this.downloadProperty();
+          
         }
 
     }
@@ -48,8 +52,8 @@ export class PropertyDetailsComponent implements OnInit {
 
     onSubmit(propertyObject: Property): void {
         if (this.location.isCurrentPathEqualTo("/properties/new-property")) {
-            propertyObject.addressId = 1;
-            propertyObject.ownerId = 1;
+            propertyObject.addressId = 4;
+            propertyObject.ownerId = 4;
             this.propertiesService.addProperty(propertyObject).subscribe(
                 onSuccess => console.log(onSuccess),
                 onError => console.log(onError)

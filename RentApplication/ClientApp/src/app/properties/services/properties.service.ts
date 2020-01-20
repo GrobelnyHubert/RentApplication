@@ -7,8 +7,8 @@ import { PropertiesBackendService } from '../../../services/properties-backend-s
 export class PropertiesService {
     constructor(private propertiesBackendService: PropertiesBackendService) { }
 
-        addProperty(newProperty: Property): Observable<number> {
-            return this.propertiesBackendService.addProperty(newProperty);
+    addProperty(newProperty: Property): Observable<number> {
+      return this.propertiesBackendService.addProperty(newProperty);
     }
     getProperty(propertyId: number): Observable<Property> {
         return this.propertiesBackendService.getProperty(propertyId);
