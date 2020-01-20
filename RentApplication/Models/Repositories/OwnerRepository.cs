@@ -34,5 +34,19 @@ namespace RentApplication.Models.Repositories
             }
            return _databaseContext.Owners.FirstOrDefault(owner => owner.Id == ownerId);
         }
+        public List<Owner> GetAll()
+        {
+            return _databaseContext.Owners.ToList();
+        }
+        public int UpdateOwner(Owner owner)
+        {
+            if( owner == null)
+            {
+                throw new Exception("Object owner cannot be null.");
+            }
+            _databaseContext.Owners.Update(owner);
+            _databaseContext.SaveChanges();
+            return owner.Id;
+        }
     }
 }

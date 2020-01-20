@@ -27,9 +27,32 @@ namespace RentApplication.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            _ownerRepository.AddOwner(owner);
+         
+            return new JsonResult(_ownerRepository.AddOwner(owner));
+        }
+        [HttpGet("[action]")]
+        public IActionResult GetOwners()
+        {
+            return new JsonResult(_ownerRepository.GetAll());
+        }
+        [HttpPost("[action]")]
+        public IActionResult UpdateOwner([FromBody] Owner owner)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            _ownerRepository.UpdateOwner(owner);
             return new JsonResult(owner.Id);
+        }
+        [HttpGet("[action]")]
+        public IActionResult GetOwner(int ownerId)
+        {
+            if(ownerId <= 0)
+            {
+                return BadRequest("Incorect owner id");
+            }
+            return new JsonResult(_ownerRepository.GetOwner(ownerId));
         }
     }
 }

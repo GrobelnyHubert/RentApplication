@@ -17,7 +17,7 @@ namespace RentApplication.Models.Repositories
         }
         public int AddAddress(Address address)
         {
-            if(address == null)
+            if (address == null)
             {
                 throw new Exception("Address object cannot be null.");
             }
@@ -28,11 +28,25 @@ namespace RentApplication.Models.Repositories
 
         public Address GetAddress(int addressId)
         {
-            if(addressId <= 0)
+            if (addressId <= 0)
             {
                 throw new Exception("Address Id cannt be less than 0.");
             }
             return _databaseContext.Adresses.Where(address => address.AddressId == addressId).FirstOrDefault();
+        }
+        public List<Address> GetAll()
+        {
+            return _databaseContext.Adresses.ToList();
+        }
+        public int UpdateAddress(Address address)
+        {
+            if (address == null)
+            {
+                throw new Exception("Obcject address cannot be null.");
+            }
+            _databaseContext.Adresses.Update(address);
+            _databaseContext.SaveChanges();
+            return address.AddressId;
         }
     }
 }

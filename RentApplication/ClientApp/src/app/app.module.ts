@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,6 +16,10 @@ import { PropertiesBackendService } from '../services/properties-backend-service
 import { HttpPropertiesBackendService } from '../services/http-properties-backend-service';
 import { PropertyDetailsComponent } from './properties/components/property-details.component';
 
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { CalendarModule } from 'primeng/calendar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +32,8 @@ import { PropertyDetailsComponent } from './properties/components/property-detai
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    BrowserAnimationsModule,
+    CalendarModule,
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
