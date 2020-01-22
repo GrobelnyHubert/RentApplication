@@ -8,6 +8,8 @@
       "jasmine",
       "jasminewd2",
       "node"
-    ]
+    ],
+    "experimentalDecorators": true,
+    "allowJs": true
   }
 }

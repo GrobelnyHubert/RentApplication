@@ -19,7 +19,8 @@ import { PropertyDetailsComponent } from './properties/components/property-detai
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { CalendarModule } from 'primeng/calendar';
+import { ProgressSpinnerModule, ConfirmDialogModule } from 'primeng/primeng';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,9 +33,10 @@ import { CalendarModule } from 'primeng/calendar';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-    BrowserAnimationsModule,
-    CalendarModule,
-    HttpClientModule,
+    BrowserAnimationsModule,    
+      ProgressSpinnerModule,
+      HttpClientModule,
+      ConfirmDialogModule,
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
