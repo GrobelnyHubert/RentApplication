@@ -2,6 +2,8 @@
   <div>
     <h3>{{pageTitle}}</h3>
   </div>
+    <p-toast [sticky]="false" [life]="5000" [(value)]="messages"></p-toast>
+    <p-confirmDialog widht="450"></p-confirmDialog>
   <div>
     <table class="table table-responsive table-striped">
       <thead class="thead-dark">
@@ -21,15 +23,15 @@
           <td>{{property.type === 0 ? "Dom" : "Mieszkanie"}}</td>
           <td>{{property.rooms}}</td>
           <td>{{property.area}} m<sub>2</sub></td>
-          <td><button class="btn btn-primary" (click)="getProperty(property.id)">Details</button></td>
-          <td><button class="btn btn-success" (click)="updateProperty(property.id)">Update</button></td>
-          <td><button class="btn btn-danger" (click)="deleteProperty(property.id)">Delete</button></td>
+          <td><button class="btn btn-primary" (click)="getProperty(property.id)">Szczegóły</button></td>
+          <td><button class="btn btn-success" (click)="updateProperty(property.id)">Aktualizuj</button></td>
+          <td><button class="btn btn-danger" (click)="deleteProperty(property.id)">Usuń</button></td>
         </tr>
         <tr *ngIf="properties.length == 0">
-          <td style="text-align:center" colspan="8">{{tempInfo}}</td>
+          <td style="text-align:center" colspan="8"><p-progressSpinner [style]="{width:'40px', height:'40px'}"></p-progressSpinner></td>
         </tr>
       </tbody>
     </table>
-    <p-calendar [(ngModel)]="value" [inline]="true"></p-calendar>
+ 
   </div>
 </div>

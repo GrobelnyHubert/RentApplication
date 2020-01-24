@@ -3,35 +3,37 @@ import { Property } from '../../../models/property';
 import { PropertiesService } from '../services/properties.service';
 import { Router } from '@angular/router';
 import _ from 'lodash';
+import { ConfirmationService, Message } from 'primeng/components/common/api';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { BaseComponent } from '../../../common/base.component';
 
 @Component({
     templateUrl: './properties.component.html'
 })
 
-export class PropertiesComponent implements OnInit {
+export class PropertiesComponent extends BaseComponent implements OnInit {
   constructor(
+    private activatedRoute: ActivatedRoute,
+    private location: Location,
     private propertiesService: PropertiesService,
-    private router: Router
-  ) { };
+    private router: Router,
+    private confirmationService: ConfirmationService
+  ) { super(activatedRoute, location) };
 
   properties: Array<Property> = new Array<Property>();
   pageTitle: string = "Lista dostępnych nieruchomości";
-  tempInfo: string = "Loading...";
+
   ngOnInit(): void{
+    this.messages = new Array<Message>();
     this.downloadProperties();
   }
   downloadProperties(): void {
-   
     this.propertiesService.getProperties().subscribe(
-      propertiesFromDB => {
-        if (propertiesFromDB.length == 0) {
-          this.tempInfo = "Records not found";
-        }
-        else {
-          this.properties = propertiesFromDB;
-        }
-      }),
-        error => console.log(error)
+      propertiesFromDB => this.properties = propertiesFromDB,
+      errorMessage => this.showMessage(true, 'warn', 'Information', false, errorMessage)
+    );
+     
   }
   getProperty(id: number): void {
     this.router.navigate(['./properties/property-details', id]);
@@ -41,11 +43,21 @@ export class PropertiesComponent implements OnInit {
       this.router.navigate(['./properties/property-update', id]);
   }
   deleteProperty(id: number): void {
-    this.propertiesService.deleteProperty(id).subscribe(
-      onSuccess => console.log(onSuccess),
-      onError => console.log(onError)
-    );
-    this.properties.splice(this.properties.findIndex(prop => prop.Id == id), 1)
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to delete this property?',
+      header: 'Confirmation',
+      icon: 'fa fa-question-circle',
+      accept: () => {
+        this.propertiesService.deleteProperty(id).subscribe(
+          onSuccess => {
+            this.showMessage(false, 'success', 'Cinfirmation', true, 'Property has been deleted succesfully')
+            this.properties.splice(this.properties.findIndex(prop => prop.id === id), 1);
+          },
+          errorMessage => this.showMessage(true, 'warn', 'Information', false, errorMessage)
+        );
+      },
+    })
+   
   }
 
   }

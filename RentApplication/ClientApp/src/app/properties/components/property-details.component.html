@@ -1,8 +1,21 @@
 <div>
   <div style="margin-top:25px">
-    <a (click)="goBack()" class="btn btn-warning">Wstecz</a>
+    <a (click)="goBack()" class="btn btn-warning">Wstecz</a>   <h3>{{pageTitle}}</h3>
+    <a (click)="activateNewAddressMode()" class="btn btn-warning">Wstecz</a>   <h3>{{addressBtnTitle}}</h3>
+    <a (click)="activateNewOwnerMode()" class="btn btn-warning">Wstecz</a>   <h3>{{ownerBtnTitle}}</h3>
+  </div>
+
+  <div *ngIf="isNewOwnerModeActivated">
+    <new-owner [receivedId]="property.ownerId" (ownerAddedEvent)="ownerAddedEvent($event)"></new-owner>
+  </div>
+  <div *ngIf="isNewAddressModeActivated">
+    <new-address [receivedId]="property.addressId" (addressAddedEvent)="addressAddedEvent($event)"></new-address>
+  </div>
+
+  <div>
     <h3>{{pageTitle}}</h3>
   </div>
+  <p-toast [sticky]="false" [life]="5000" [(value)]="messages"></p-toast>
   <div style="margin-top:25px; margin-bottom:50px">
     <form #propertyForm="ngForm" (ngSubmit)="onSubmit(property)">
       <div class="form-group">
@@ -15,11 +28,11 @@
       </div>
       <div class="form-group">
         <label for="rooms">Ilość pokoji</label>
-        <input [disabled]="!isInEditMode" id="rooms" name="rooms" type="number" [(ngModel)]="property.rooms" class="form-control" placeholder="Ilość pokoji" />
+        <input [disabled]="!isInEditMode" required id="rooms" name="rooms" type="number" [(ngModel)]="property.rooms" class="form-control" placeholder="Ilość pokoji" />
       </div>
       <div class="form-group">
         <label for="area">Powierzchnia</label>
-        <input [disabled]="!isInEditMode" id="area" name="area" type="number" [(ngModel)]="property.area" class="form-control" placeholder="Powierzchnia nieruchomości" />
+        <input [disabled]="!isInEditMode" required id="area" name="area" type="number" [(ngModel)]="property.area" class="form-control" placeholder="Powierzchnia nieruchomości" />
       </div>
       <div class="form-group">
         <label for="washer">Zmywarka</label>
@@ -47,10 +60,10 @@
       </div>
       <div class="form-group">
         <label for="description">Opis:</label>
-        <textarea [disabled]="!isInEditMode" id="description" name="description" [(ngModel)]="property.description" class="form-control"></textarea>
+        <textarea [disabled]="!isInEditMode" required id="description" name="description" [(ngModel)]="property.description" class="form-control"></textarea>
       </div>
       <div *ngIf="isInEditMode">
-        <button type="submit" class="btn btn-primary">Zapisz</button>
+        <button type="submit" [disabled]="!propertyForm.form.valid" class="btn btn-primary">Zapisz</button>
       </div>
     </form>
   </div>

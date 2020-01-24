@@ -20,7 +20,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ProgressSpinnerModule, ConfirmDialogModule } from 'primeng/primeng';
-
+import { ToastModule } from 'primeng/toast';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +36,8 @@ import { ProgressSpinnerModule, ConfirmDialogModule } from 'primeng/primeng';
     BrowserAnimationsModule,    
       ProgressSpinnerModule,
       HttpClientModule,
-      ConfirmDialogModule,
+    ConfirmDialogModule,
+    ToastModule,
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
