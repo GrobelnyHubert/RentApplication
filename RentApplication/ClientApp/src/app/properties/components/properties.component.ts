@@ -3,7 +3,7 @@ import { Property } from '../../../models/property';
 import { PropertiesService } from '../services/properties.service';
 import { Router } from '@angular/router';
 import _ from 'lodash';
-import { ConfirmationService, Message } from 'primeng/components/common/api';
+import { ConfirmationService, Message } from 'primeng//api';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { BaseComponent } from '../../../common/base.component';
@@ -51,7 +51,7 @@ export class PropertiesComponent extends BaseComponent implements OnInit {
         this.propertiesService.deleteProperty(id).subscribe(
           onSuccess => {
             this.showMessage(false, 'success', 'Cinfirmation', true, 'Property has been deleted succesfully')
-            this.properties.splice(this.properties.findIndex(prop => prop.id === id), 1);
+            this.properties.splice(this.properties.findIndex(prop => prop.Id === id), 1);
           },
           errorMessage => this.showMessage(true, 'warn', 'Information', false, errorMessage)
         );

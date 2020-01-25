@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Property = /** @class */ (function () {
-    function Property(Id, type, description, rooms, area, washer, refrigerator, iron) {
+    function Property(Id, type, description, rooms, area, washer, refrigerator, iron, addressId, ownerId) {
         this.Id = Id;
         this.type = type;
         this.description = description;
@@ -10,6 +10,8 @@ var Property = /** @class */ (function () {
         this.washer = washer;
         this.refrigerator = refrigerator;
         this.iron = iron;
+        this.addressId = addressId;
+        this.ownerId = ownerId;
     }
     return Property;
 }());

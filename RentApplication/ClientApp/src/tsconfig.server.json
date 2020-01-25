@@ -5,7 +5,9 @@
     "experimentalDecorators": true,
     "allowJs": true
   },
-    "angularCompilerOptions": {
-      "entryModule": "app/app.server.module#AppServerModule"
-    }
+  "angularCompilerOptions": {
+    "entryModule": "app/app.server.module#AppServerModule",
+    "experimentalDecorators": true,
+    "allowJs": true
+  }
 }

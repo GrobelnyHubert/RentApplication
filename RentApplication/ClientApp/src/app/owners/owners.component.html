@@ -1,0 +1,36 @@
+<div>
+  <div>
+    <h3>{{pageTitle}}</h3>
+  </div>
+  <p-toast [sticky]="false" [life]="5000" [(value)]="messages"></p-toast>
+  <p-confirmDialog widht="450"></p-confirmDialog>
+  <div>
+    <table class="table table-responsive table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Lp.</th>
+          <th>Imie</th>
+          <th>Nazwisko</th>
+          <th>Telefon</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let owner of owners let i = index" [attr.data.-index]="i" class="col-md-12">
+          <td>{{i + 1}}</td>
+          <td>{{owner.name}}</td>
+          <td>{{owner.surname}}</td>
+          <td>{{owner.phone}}</td>
+          <td><button class="btn btn-primary" (click)="getOwner(owner.id)">Szczegóły</button></td>
+          <td><button class="btn btn-success" (click)="updateOwner(owner.id)">Aktualizuj</button></td>  
+        </tr>
+        <tr *ngIf="owners.length == 0">
+          <td style="text-align:center" colspan="8"><p-progressSpinner [style]="{width:'40px', height:'40px'}"></p-progressSpinner></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+>

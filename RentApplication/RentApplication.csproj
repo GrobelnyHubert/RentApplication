@@ -28,6 +28,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\address\addresses.component.ts" />
+    <None Remove="ClientApp\src\app\address\new-address.component.ts" />
+    <None Remove="ClientApp\src\app\address\service\addresses.service.ts" />
+    <None Remove="ClientApp\src\app\owners\new-owner.ts" />
+    <None Remove="ClientApp\src\app\owners\owners.component.ts" />
+    <None Remove="ClientApp\src\app\owners\service\owners.service.ts" />
     <None Remove="ClientApp\src\app\properties\components\property-details.component.ts" />
     <None Remove="ClientApp\src\app\properties\properties.component.ts" />
     <None Remove="ClientApp\src\app\properties\services\properties.service.ts" />
@@ -41,6 +47,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\address\addresses.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\address\new-address.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\address\service\addresses.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\owners\new-owner.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\owners\owners.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\owners\service\owners.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\properties\components\properties.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\properties\components\property-details.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\properties\services\properties.service.ts" />

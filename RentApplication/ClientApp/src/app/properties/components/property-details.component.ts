@@ -4,7 +4,7 @@ import { PropertiesService } from '../services/properties.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { map } from 'rxjs/operators';
-import { Message } from 'primeng/components/common/api';
+import { Message } from 'primeng/api';
 import { Owner } from '../../../models/owner';
 import { BaseComponent } from '../../../common/base.component';
 
@@ -83,13 +83,13 @@ export class PropertyDetailsComponent extends BaseComponent implements OnInit {
         if (this.location.isCurrentPathEqualTo("/properties/new-property")) {
         
             this.propertiesService.addProperty(propertyObject).subscribe(
-                onSuccess => this.showMessage(true, 'success', 'Confirmation', true,'Property has been created successfully'),
-              onError => this.showMessage(true, 'warn', 'Inforamtion', false, onError)
+                onSuccess => this.showMessage(false, 'success', 'Confirmation', true,'Property has been created successfully'),
+              onError => this.showMessage(false, 'warn', 'Inforamtion', false, onError)
             )
         } else {
             this.propertiesService.updateProperty(propertyObject).subscribe(
-              onSucces => this.showMessage(true, 'success', 'Confirmation', true, 'Property has been created successfully'),
-              onError => this.showMessage(true, 'warn', 'Inforamtion', false, onError)
+              onSucces => this.showMessage(false, 'success', 'Confirmation', true, 'Property has been created successfully'),
+              onError => this.showMessage(false, 'warn', 'Inforamtion', false, onError)
             )
         }
     }
